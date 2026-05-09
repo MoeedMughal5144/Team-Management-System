@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaStudio — About Us</title>
+  <!-- Favicon Code -->
+<link rel="icon" type="image/png" href="assets/favicon.jpg">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- ─── NAVBAR ──────────────────────────────────────────────────────── -->
+  <nav class="navbar">
+    <a href="#" class="nav-logo">NexaStudio</a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+      <a href="/admin" class="btn-admin">Admin Panel</a>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>We are hiring</span>
+      </div>
+      <h1 class="hero-title" id="heroTitle">
+        Crafting<br><span class="gradient-text">Digital Futures</span>
+      </h1>
+      <p class="hero-sub" id="heroDesc">
+        Full-service digital agency specializing in web development, UI/UX design, and cloud solutions.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num"><span>200</span>+</div>
+          <div class="stat-label">Clients Served</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span>6</span></div>
+          <div class="stat-label">Team Experts</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span>98</span>%</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num"><span>5</span></div>
+          <div class="stat-label">Years Building</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABOUT ─────────────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-card-main">
+            <div class="about-icon-row" id="serviceChips">
+              <!-- JS fills services -->
+            </div>
+            <p style="font-size:0.9rem; color: var(--text-muted); line-height:1.75;" id="companyDesc">
+              Loading…
+            </p>
+            <div class="about-card-stat">
+              <div class="mini-stat"><div class="num">200+</div><div class="lbl">Projects</div></div>
+              <div class="mini-stat"><div class="num">6</div><div class="lbl">Specialists</div></div>
+              <div class="mini-stat"><div class="num">2019</div><div class="lbl">Founded</div></div>
+              <div class="mini-stat"><div class="num">12+</div><div class="lbl">Countries</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text reveal">
+          <span class="section-label">Who We Are</span>
+          <h2 class="section-title" id="companyName">NexaStudio</h2>
+          <p class="section-desc" id="missionText">Loading…</p>
+
+          <div class="mission-vision">
+            <div class="mv-card">
+              <div class="mv-icon">🎯</div>
+              <div class="mv-title">Mission</div>
+              <div class="mv-text" id="missionCard">Loading…</div>
+            </div>
+            <div class="mv-card">
+              <div class="mv-icon">🔭</div>
+              <div class="mv-title">Vision</div>
+              <div class="mv-text" id="visionCard">Loading…</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TEAM ──────────────────────────────────────────────────────────── -->
+  <section id="team">
+    <div class="container">
+      <div style="margin-bottom:1.5rem;" class="reveal">
+        <span class="section-label">The People</span>
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-desc">Experts who turn ideas into reality — one pixel, one line of code at a time.</p>
+      </div>
+
+      <div class="team-controls reveal">
+        <div class="search-box">
+          <span class="search-icon"><i class="fas fa-search"></i></span>
+          <input type="text" id="searchInput" placeholder="Search by name or bio…">
+        </div>
+        <div class="filter-tabs" id="filterTabs">
+          <button class="filter-tab active" data-dept="All">All</button>
+          <button class="filter-tab" data-dept="Developer">Developer</button>
+          <button class="filter-tab" data-dept="Designer">Designer</button>
+          <button class="filter-tab" data-dept="Management">Management</button>
+        </div>
+      </div>
+
+      <div class="team-grid" id="teamGrid">
+        <div class="team-loading">
+          <div class="spinner"></div>
+          <p>Loading team members…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT PLACEHOLDER ───────────────────────────────────────────── -->
+  <section id="contact" style="background: var(--bg-2); text-align:center;">
+    <div class="container reveal">
+      <span class="section-label">Get In Touch</span>
+      <h2 class="section-title">Ready to Build Something?</h2>
+      <p class="section-desc" style="margin: 0 auto 2rem;">
+        Whether you have a project in mind or just want to say hello — we'd love to hear from you.
+      </p>
+      <a href="mailto:hello@nexastudio.io" style="
+        display:inline-block;
+        padding: 0.9rem 2.5rem;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        border-radius: 100px;
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 8px 24px rgba(99,102,241,0.35);
+        transition: all 0.3s ease;
+        font-family: var(--font-display);
+      " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
+        hello@nexastudio.io
+      </a>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-logo">NexaStudio</div>
+    <p>Crafting digital futures, one project at a time.</p>
+    <p style="margin-top:0.5rem; color: var(--text-faint); font-size:0.78rem;">
+      © 2025 NexaStudio. Built with ❤️ and Node.js.
+    </p>
+  </footer>
+
+  <!-- ─── MEMBER MODAL ──────────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="memberModal">
+    <div class="modal">
+      <div class="modal-header">
+        <img id="modalImg" src="" alt="">
+        <div class="modal-header-overlay"></div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <h2 class="modal-name" id="modalName"></h2>
+        <p class="modal-role" id="modalRole"></p>
+        <p class="modal-bio" id="modalBio"></p>
+        <div class="modal-socials" id="modalSocials"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TOAST ─────────────────────────────────────────────────────────── -->
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

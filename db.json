@@ -1,0 +1,32 @@
+{
+  "company": {
+    "name": "NexaStudio",
+    "tagline": "Crafting Digital Futures",
+    "mission": "To empower businesses through innovative technology solutions that are both beautiful and functional.",
+    "vision": "A world where every business, regardless of size, has access to world-class digital experiences.",
+    "description": "We are a full-service digital agency specializing in web development, UI/UX design, mobile applications, and cloud infrastructure. Founded in 2019, NexaStudio has helped 200+ clients transform their digital presence.",
+    "services": [
+      "Web Development",
+      "UI/UX Design",
+      "Mobile Apps",
+      "Cloud Solutions",
+      "Digital Marketing",
+      "AI Integration"
+    ]
+  },
+  "team": [
+    {
+      "id": "b605d89d-91af-4fc6-8269-156ba99b5216",
+      "name": "Moeed Ali",
+      "role": "Full Stack",
+      "department": "Developer",
+      "bio": "Team Leader",
+      "image": "https://drive.google.com/file/d/1ZomTxVK605YpKbpB64r8vPp96wYVp0as/view?usp=drive_link",
+      "social": {
+        "linkedin": "",
+        "github": "",
+        "twitter": ""
+      }
+    }
+  ]
+}

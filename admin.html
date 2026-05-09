@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexaStudio Admin Panel</title>
+  <!-- Favicon Code -->
+<link rel="icon" type="image/png" href="assets/favicon.jpg">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- ─── SIDEBAR ───────────────────────────────────────────────────────── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">NexaStudio</div>
+    <div class="sidebar-subtitle">Admin Panel</div>
+
+    <span class="sidebar-section">Management</span>
+    <button class="sidebar-item active" data-page="team" onclick="switchPage('team')">
+      <span class="icon">👥</span> Team Members
+    </button>
+    <button class="sidebar-item" data-page="company" onclick="switchPage('company')">
+      <span class="icon">🏢</span> Company Info
+    </button>
+
+    <div class="sidebar-footer">
+      <a href="/" class="back-link">
+        <i class="fas fa-arrow-left"></i> Back to Site
+      </a>
+    </div>
+  </aside>
+
+  <!-- ─── MAIN ──────────────────────────────────────────────────────────── -->
+  <main class="main-content">
+
+    <div class="topbar">
+      <div class="topbar-title" id="topbarTitle">Team Members</div>
+      <div class="topbar-actions">
+        <button class="btn btn-primary" id="addMemberBtn" onclick="openDrawer()">
+          <i class="fas fa-plus"></i> Add Member
+        </button>
+      </div>
+    </div>
+
+    <!-- ─── TEAM PAGE ────────────────────────────────────────────────── -->
+    <div class="page active" id="page-team">
+      <div class="stats-row" id="statsRow">
+        <!-- JS fills -->
+      </div>
+
+      <div class="table-card">
+        <div class="table-header">
+          <span class="table-title">All Team Members</span>
+          <input type="text" class="search-input" id="adminSearch" placeholder="🔍  Search members…" oninput="filterTable()">
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Department</th>
+              <th>Bio</th>
+              <th>Social</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="teamTableBody">
+            <tr><td colspan="5" style="text-align:center; color:var(--text-faint); padding:2rem">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ─── COMPANY PAGE ─────────────────────────────────────────────── -->
+    <div class="page" id="page-company">
+      <div class="table-card" style="max-width:640px; padding:2rem">
+        <h2 style="font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:1.5rem">
+          Edit Company Information
+        </h2>
+        <div class="form-group">
+          <label class="form-label">Company Name</label>
+          <input type="text" class="form-control" id="cName">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tagline</label>
+          <input type="text" class="form-control" id="cTagline">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Mission</label>
+          <textarea class="form-control" id="cMission" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Vision</label>
+          <textarea class="form-control" id="cVision" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea class="form-control" id="cDesc" rows="4"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Services (comma-separated)</label>
+          <input type="text" class="form-control" id="cServices">
+        </div>
+        <button class="btn btn-primary" onclick="saveCompany()">
+          <i class="fas fa-save"></i> Save Changes
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ─── ADD/EDIT DRAWER ───────────────────────────────────────────────── -->
+  <div class="drawer-overlay" id="drawerOverlay" onclick="handleDrawerOverlayClick(event)">
+    <div class="drawer">
+      <div class="drawer-head">
+        <div class="drawer-title" id="drawerTitle">Add Team Member</div>
+        <button class="drawer-close" onclick="closeDrawer()">✕</button>
+      </div>
+
+      <div class="drawer-body">
+        <input type="hidden" id="editId">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" class="form-control" id="fName" placeholder="Jane Doe">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Role / Title *</label>
+            <input type="text" class="form-control" id="fRole" placeholder="Frontend Developer">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Department *</label>
+          <select class="form-control" id="fDept">
+            <option value="Developer">Developer</option>
+            <option value="Designer">Designer</option>
+            <option value="Management">Management</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Bio</label>
+          <textarea class="form-control" id="fBio" placeholder="Short bio about this team member…" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Profile Image URL</label>
+          <input type="text" class="form-control" id="fImage" placeholder="Upload" oninput="previewImg()">
+          <img id="imgPreview" class="img-preview" src="" alt="" style="display:none">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">LinkedIn URL</label>
+          <input type="text" class="form-control" id="fLinkedin" placeholder="https://linkedin.com/in/…">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">GitHub URL</label>
+            <input type="text" class="form-control" id="fGithub" placeholder="https://github.com/…">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Twitter URL</label>
+            <input type="text" class="form-control" id="fTwitter" placeholder="https://twitter.com/…">
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-footer">
+        <button class="btn btn-secondary" onclick="closeDrawer()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveMember()">
+          <i class="fas fa-check"></i> <span id="saveBtnText">Add Member</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── CONFIRM DELETE ────────────────────────────────────────────────── -->
+  <div class="confirm-overlay" id="confirmOverlay">
+    <div class="confirm-box">
+      <div class="confirm-icon">🗑️</div>
+      <div class="confirm-title">Remove Team Member?</div>
+      <div class="confirm-text" id="confirmText">Are you sure you want to remove this member? This action cannot be undone.</div>
+      <div class="confirm-actions">
+        <button class="btn btn-secondary" onclick="closeConfirm()">Cancel</button>
+        <button class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── TOAST ─────────────────────────────────────────────────────────── -->
+  <div class="toast" id="toast"></div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>
